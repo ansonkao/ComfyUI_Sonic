@@ -196,7 +196,7 @@ class Sonic():
         self.use_interframe = use_interframe
         #config.use_interframe = enable_interpolate_frame
         add_ip_adapters(unet, [32], [ip_audio_scale])
-        sonic_dict = torch.load(sonic_unet, map_location="cpu")
+        sonic_dict = torch.load(sonic_unet, map_location="cpu", weights_only=False)
         unet.load_state_dict(sonic_dict,strict=True,)
         del sonic_dict
         gc.collect()
